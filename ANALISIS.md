@@ -1,12 +1,11 @@
 # ANALISIS
 
 ## 1. Asincronismo
-¿Por qué usamos un Observable y un `.subscribe()` en lugar de simplemente asignar el resultado de la función `http.get()` a nuestra variable?
 
-**Respuesta:**
+Utilizamos Observable y subscribe porque el HTTP no esta disponible inmediatamente, sino que la fuente de datos envia el resultado cuando obtiene la respuesta del server.
+Con subscribe se define que hacer en el momento en que se obtiene esa respuesta (como calcular un promedio)
+Si se intentara asignar de forma sincronizada, no se llenarian los datos correctamente.
 
 
 ## 2. Modularización
-¿Qué sucede si olvidamos declarar nuestro `SerieListComponent` en el arreglo de `declarations` del módulo, pero intentamos usar su selector en el `app.component.html`?
-
-**Respuesta:**
+Si el componente no esta declarado correctamente y usas el selector en la plantilla, Angula no lo reconoce y retorna un error. Esto sucede por que el template intenta usar una tag que el modulo no reconoce, y o bien no compila y termina sin correr, o no lo renderiza bien.
